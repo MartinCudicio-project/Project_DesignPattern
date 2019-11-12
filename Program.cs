@@ -7,7 +7,6 @@ namespace Monopoly_game
         public static void Main(string[] args)
         {
             Console.WriteLine("Hello World MArtin !!!");
-            Console.WriteLine("it's the first step");
         }
     }
 }
