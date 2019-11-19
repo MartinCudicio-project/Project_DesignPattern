@@ -1,6 +1,7 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29403.142
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monopoly_game", "Monopoly_game.csproj", "{0D507EDF-B531-40E6-B80B-F9549445DB95}"
 EndProject
 Global
@@ -9,9 +10,15 @@ Global
 		Release|anycpu = Release|anycpu
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0D507EDF-B531-40E6-B80B-F9549445DB95}.Debug|anycpu.ActiveCfg = Debug|anycpu
-		{0D507EDF-B531-40E6-B80B-F9549445DB95}.Debug|anycpu.Build.0 = Debug|anycpu
-		{0D507EDF-B531-40E6-B80B-F9549445DB95}.Release|anycpu.ActiveCfg = Release|anycpu
-		{0D507EDF-B531-40E6-B80B-F9549445DB95}.Release|anycpu.Build.0 = Release|anycpu
+		{0D507EDF-B531-40E6-B80B-F9549445DB95}.Debug|anycpu.ActiveCfg = Debug|Any CPU
+		{0D507EDF-B531-40E6-B80B-F9549445DB95}.Debug|anycpu.Build.0 = Debug|Any CPU
+		{0D507EDF-B531-40E6-B80B-F9549445DB95}.Release|anycpu.ActiveCfg = Release|Any CPU
+		{0D507EDF-B531-40E6-B80B-F9549445DB95}.Release|anycpu.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2BEB7316-B0FA-4570-AB73-7D58D4401133}
 	EndGlobalSection
 EndGlobal
