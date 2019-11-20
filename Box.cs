@@ -13,8 +13,11 @@ namespace Monopoly_game
 
         public Box(string name,string display)
         {
-            this.name = name;
-            this.display = display;
+            this.Name = name;
+            this.Display = display;
         }
+
+        public string Name { get => name; set => name = value; }
+        public string Display { get => display; set => display = value; }
     }
 }

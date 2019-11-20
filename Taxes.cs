@@ -12,7 +12,8 @@ namespace Monopoly_game
 
         public Taxes(int taxe, string name, string display) : base(name, display)
         {
-            this.taxe = taxe;
+            this.Taxe = taxe;
         }
+        public int Taxe { get => taxe; set => taxe = value; }
     }
 }

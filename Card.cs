@@ -10,6 +10,11 @@ namespace Monopoly_game
     {
         private string description;
 
-        
+        public Card(string description)
+        {
+            Description = description;
+        }
+
+        public string Description { get => description; set => description = value; }
     }
 }

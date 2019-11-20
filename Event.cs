@@ -12,7 +12,9 @@ namespace Monopoly_game
         
         public Event(string description, string name, string display) : base(name, display)
         {
-            this.description = description;
+            this.Description = description;
         }
+
+        public string Description { get => description; set => description = value; }
     }
 }

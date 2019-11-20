@@ -12,7 +12,9 @@ namespace Monopoly_game
 
         public gare_station(int buying_prize, string name,string display) : base (name,display)
         {
-            this.buying_prize = buying_prize;
+            this.Buying_prize = buying_prize;
         }
+
+        public int Buying_prize { get => buying_prize; set => buying_prize = value; }
     }
 }

@@ -13,8 +13,11 @@ namespace Monopoly_game
 
         public Public_utility(int buying_prize,int rent, string name, string display) : base(name, display)
         {
-            this.buying_prize = buying_prize;
-            this.rent = rent;
+            this.Buying_prize = buying_prize;
+            this.Rent = rent;
         }
+
+        public int Buying_prize { get => buying_prize; set => buying_prize = value; }
+        public int Rent { get => rent; set => rent = value; }
     }
 }
