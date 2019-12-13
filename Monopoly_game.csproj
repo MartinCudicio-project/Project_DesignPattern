@@ -34,7 +34,6 @@
     <Compile Include="Board.cs" />
     <Compile Include="Box.cs" />
     <Compile Include="Card.cs" />
-    <Compile Include="Dice.cs" />
     <Compile Include="Event.cs" />
     <Compile Include="gare_station.cs" />
     <Compile Include="Player.cs" />
