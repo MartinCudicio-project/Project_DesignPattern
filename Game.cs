@@ -15,13 +15,14 @@ namespace Monopoly_game
         private int common_pot;
         private Player[] player_list;
         private static readonly Game instance = new Game();
-
+        private int first_player;
         private Game()
         {
             this.Boxes = null;
             this.Common_pot = 0;
             this.Player_list = null;             // je prefere mettre null plutot que createPlayer car sinon la creation des joueurs est la première chose qui s'affiche sur la console avant même le début du jeux, presentation, ect ....
             this.Board = createBoard();
+            this.First_player = 0;
         }
 
         public static Game Instance => instance;
@@ -30,13 +31,14 @@ namespace Monopoly_game
         public List<Box> Boxes { get => Board; set => Board = value; }
         public Player[] Player_list { get => player_list; set => player_list = value; }
         internal List<Box> Board { get => board; set => board = value; }
+        public int First_player { get => first_player; set => first_player = value; }
 
         public void  create_player()
         {
             string nom = "";
             Console.WriteLine("Selectionnez le nombre de joueurs (entre 2 et 8)");
             int choix = Convert.ToInt32(Console.ReadLine());
-            while (choix > 8 || choix < 1) 
+            while (choix > 8 || choix < 2) 
             {
                 Console.WriteLine("Choix incorrect");
                 Console.WriteLine("Selectionnez le nombre de joueurs (entre 2 et 8)");
@@ -45,7 +47,7 @@ namespace Monopoly_game
             Player [] List_player = new Player[choix];
             for (int i = 0; i < choix ;i++)
             {
-                Console.WriteLine("Joueur "+i+" entrez votre nom");
+                Console.WriteLine("Joueur "+(i+1)+" entrez votre nom");
                 nom = Console.ReadLine();
                 List_player[i] = new Player(nom, null);
             }

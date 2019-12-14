@@ -14,6 +14,7 @@ namespace Monopoly_game
         private string image;
         private Card[] card_list;
         private int index;
+        private int _double;
 
         public Player(string pseudo,string image)
         {
@@ -29,6 +30,7 @@ namespace Monopoly_game
         public int Balance { get => balance; set => balance = value; }
         public string Image { get => image; set => image = value; }
         public int Index { get => index; set => index = value; }
+        public int Double { get => _double; set => _double = value; }
         internal Box[] Property_list { get => property_list; set => property_list = value; }
         internal Card[] Card_list { get => card_list; set => card_list = value; }
     }
