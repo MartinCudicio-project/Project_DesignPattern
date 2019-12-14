@@ -9,8 +9,8 @@ namespace Monopoly_game
         {
 
             Console.WriteLine("Hello World MArtin !!!");
-
-            MainGame();
+            Menu.Selection_avec_Consigne(null);
+            //MainGame();
             Console.ReadKey();
 
         }

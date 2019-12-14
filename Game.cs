@@ -13,23 +13,32 @@ namespace Monopoly_game
     {
         private List<Box> board;
         private int common_pot;
-        private Player[] player_list;
+        private List<Player> player_list;
         private static readonly Game instance = new Game();
+
+        
 
         private Game()
         {
             this.Boxes = null;
             this.Common_pot = 0;
-            this.Player_list = null;             // je prefere mettre null plutot que createPlayer car sinon la creation des joueurs est la première chose qui s'affiche sur la console avant même le début du jeux, presentation, ect ....
+            this.Player_list = new List<Player>();
+            // je prefere mettre null plutot que createPlayer car sinon la creation des joueurs est la première chose qui s'affiche sur la console avant même le début du jeux, presentation, ect ....
+            // !!!!! il vaut mieux créer une liste vide !!!!!
             this.Board = createBoard();
         }
 
-        public static Game Instance => instance;
+        public static Game Instance => Instance1;
 
-        public int Common_pot { get => common_pot; set => common_pot = value; }
+        public int Common_pot { get => Common_pot1; set => Common_pot1 = value; }
         public List<Box> Boxes { get => Board; set => Board = value; }
-        public Player[] Player_list { get => player_list; set => player_list = value; }
-        internal List<Box> Board { get => board; set => board = value; }
+        public List<Player> Player_list { get => Player_list1; set => Player_list1 = value; }
+        internal List<Box> Board { get => Board1; set => Board1 = value; }
+        internal List<Box> Board1 { get => board; set => board = value; }
+        public int Common_pot1 { get => common_pot; set => common_pot = value; }
+        internal List<Player> Player_list1 { get => player_list; set => player_list = value; }
+
+        internal static Game Instance1 => instance;
 
         public void  create_player()
         {
@@ -49,7 +58,7 @@ namespace Monopoly_game
                 nom = Console.ReadLine();
                 List_player[i] = new Player(nom, null);
             }
-            this.player_list = List_player;
+            this.Player_list1 = List_player;
         }
        
         public List<Box> createBoard()  // Not a factory but it creates in he simple way each box of the board
