@@ -24,7 +24,7 @@ namespace Monopoly_game
         public Player[] Player_list { get => player_list; set => player_list = value; }
 
 
-        public  void create_player()
+        public void create_player()
         {
             Console.WriteLine("Select how many player you want");
             int choix = Convert.ToInt32(Console.ReadLine());

@@ -46,6 +46,7 @@
     <Compile Include="Property.cs" />
     <Compile Include="Public_utility.cs" />
     <Compile Include="Taxes.cs" />
+    <Compile Include="Menu.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

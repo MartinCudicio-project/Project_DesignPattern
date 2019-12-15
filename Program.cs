@@ -10,7 +10,12 @@ namespace Monopoly_game
 
             Console.WriteLine("Hello World MArtin !!!");
 
+
             Initialisation();
+
+            Menu.Selection_avec_Consigne(null);
+            //MainGame();
+
             Console.ReadKey();
 
         }
@@ -21,30 +26,42 @@ namespace Monopoly_game
             Game main = Game.Instance;
             main.create_player();
             main.First_player = chooseFirstPlayer(main.Player_list);
+
+            Random rand = new Random();                    // Sinon on obtient toujours les mêmes nombres (si on cree un nouveau random a chaque fois)
+            DiceInvoker diceinvoker = new DiceInvoker();   // Le invoker pour les lancées de dées, pour le command pattern
             int number_player_turn = main.First_player;
             bool win = false;
+            int turn_number = 1;
             while(win != true)
             {
+
                 for(int i = number_player_turn; i < main.Player_list.Length+main.First_player; i ++)
                 {
-                    if(i == main.Player_list.Length)
+                    if(i > main.Player_list.Length)
                     {
                         number_player_turn -= main.Player_list.Length;
                     }
-                    Console.WriteLine("Au tour de Joueur " + (1+number_player_turn));
-                    number_player_turn++;
+                    ///Debut du tour
+                    Console.WriteLine("Au tour de " + main.Player_list[number_player_turn].Pseudo);
+                    Command command = new Dice(main.Player_list[number_player_turn], rand);
+                    
+                    diceinvoker.LaunchDice(command);
+                    diceinvoker.ExecuteCommand();
+                    Console.WriteLine(main.Player_list[number_player_turn].Index); 
+
+
                 }
 
-                win = true;
-            }
 
-                ///Debut du tour
-                /*
-                Command command = new Dice(main.Player_list[1]);
-                DiceInvoker diceinvoker = new DiceInvoker();
-                diceinvoker.LaunchDice(command);
-                diceinvoker.ExecuteCommand();
-                Console.WriteLine(main.Player_list[1].Index);*/
+
+                number_player_turn++;
+                turn_number++;
+                if(turn_number == 4)
+                {
+                    win = true;
+                }
+                
+            }
             }
 
         static int chooseFirstPlayer(Player[] List_Player)

@@ -18,7 +18,6 @@ namespace Monopoly_game
         private int first_player;
         private Game()
         {
-            this.Boxes = null;
             this.Common_pot = 0;
             this.Player_list = null;             // je prefere mettre null plutot que createPlayer car sinon la creation des joueurs est la première chose qui s'affiche sur la console avant même le début du jeux, presentation, ect ....
             this.Board = createBoard();
@@ -28,7 +27,6 @@ namespace Monopoly_game
         public static Game Instance => instance;
 
         public int Common_pot { get => common_pot; set => common_pot = value; }
-        public List<Box> Boxes { get => Board; set => Board = value; }
         public Player[] Player_list { get => player_list; set => player_list = value; }
         internal List<Box> Board { get => board; set => board = value; }
         public int First_player { get => first_player; set => first_player = value; }
