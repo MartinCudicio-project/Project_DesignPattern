@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -7,7 +7,8 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>Monopoly_game</RootNamespace>
     <AssemblyName>Monopoly_game</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|anycpu' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,6 +31,7 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
     <Compile Include="Game.cs" />
@@ -40,8 +42,38 @@
     <Compile Include="Others_Box.cs" />
     <Compile Include="Player.cs" />
 >>>>>>> Stashed changes
+=======
+    <Compile Include="Box.cs" />
+    <Compile Include="BoxCommand.cs" />
+    <Compile Include="Card.cs" />
+    <Compile Include="Command.cs" />
+    <Compile Include="CommandFactory.cs" />
+    <Compile Include="Dice.cs" />
+    <Compile Include="Event.cs" />
+    <Compile Include="EventCommand.cs" />
+    <Compile Include="Game.cs" />
+    <Compile Include="gare_station.cs" />
+    <Compile Include="Gare_station_Command.cs" />
+    <Compile Include="Invoker.cs" />
+    <Compile Include="InvokerFactory.cs" />
+    <Compile Include="Others_Box.cs" />
+    <Compile Include="Others_Box_Command.cs" />
+    <Compile Include="Player.cs" />
+>>>>>>> final
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Property.cs" />
+    <Compile Include="PropertyCommand.cs" />
+    <Compile Include="Public_utility.cs" />
+    <Compile Include="Public_utility_Command.cs" />
+    <Compile Include="SwitchFactoryCommand.cs" />
+    <Compile Include="SwitchInvokerFactory.cs" />
+    <Compile Include="Taxes.cs" />
+    <Compile Include="Menu.cs" />
+    <Compile Include="TaxesCommand.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
