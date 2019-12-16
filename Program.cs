@@ -265,8 +265,7 @@ namespace Monopoly_game
                     }
                     
                 }
-                
-
+                Console.WriteLine();
             }
 >>>>>>> final
         }
