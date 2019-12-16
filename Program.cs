@@ -44,7 +44,6 @@ namespace Monopoly_game
 
             while (win != true)
             {
-                Console.WriteLine("\nTour numero " + turn_number);
                 for(int i = number_player_turn; i < main.Player_list.Count+number_player_turn; i ++)
                 {
                    
@@ -55,6 +54,8 @@ namespace Monopoly_game
                         
 
                     }
+                    Console.Write("lancer les des");
+                    Console.ReadLine();
                     if (main.Player_list[number_player_turn].Emprisoned == true)
                     {
                         Console.WriteLine(main.Player_list[number_player_turn].Pseudo + " est en prison");

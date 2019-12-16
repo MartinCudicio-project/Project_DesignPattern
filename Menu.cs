@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace Monopoly_game
 {
     public abstract class Menu
@@ -106,6 +108,35 @@ namespace Monopoly_game
             }
             Console.Clear();
             return choix - 2;
+        }
+
+
+        static void Preview_Broad(int index, Game main)
+        {
+
+            //nous allons recuperer les index avant et apres
+            //nous choisissons d'afficher 5 cases avant et 5 cases apres
+            int first_case = (index - 5) % 40;
+            int last_case = (index + 5) % 40;
+            Console.WriteLine("number | name | owner | house(s)?");
+            for (int i = first_case; i < last_case; i=(i+1)%40)
+            {
+                Console.Write(i + " | ");
+                if(main.Board[i] is Property)
+                {
+                    Console.ForegroundColor  = ((Property)main.Board[i]).Color;
+                }
+                Console.Write(main.Board[i].Name+ " | ");
+                Console.ResetColor();
+                if (main.Board[i] is Property)
+                {
+                    Console.Write(((Property)main.Board[i]).Owner.Pseudo + " | ");
+                }
+                else
+                {
+                    Console.WriteLine(((Property)main.Board[i]).House_number);
+                }
+            }
         }
     }
 }
