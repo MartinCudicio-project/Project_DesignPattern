@@ -45,11 +45,16 @@ namespace Monopoly_game
             while (win != true)
             {
                 Console.WriteLine("\nTour numero " + turn_number);
-                for(int i = number_player_turn; i < main.Player_list.Length+number_player_turn; i ++)
+                for(int i = number_player_turn; i < main.Player_list.Count+number_player_turn; i ++)
                 {
                    
                     ///Debut du tour
                     Console.WriteLine("\nAu tour de " + main.Player_list[number_player_turn].Pseudo);  // if player si in prison
+                    if(main.Player_list[number_player_turn].Balance < 0)                               // As we explain we don't put hypotheque function so here we eliminate player with negative balance
+                    {
+                        
+
+                    }
                     if (main.Player_list[number_player_turn].Emprisoned == true)
                     {
                         Console.WriteLine(main.Player_list[number_player_turn].Pseudo + " est en prison");
@@ -89,14 +94,19 @@ namespace Monopoly_game
                                 boxinvoker.setcommand(boxcommand_other);
                                 boxinvoker.ExecuteCommand();
                                 break;
+                            case Type.Public:
+                                BoxCommand boxcommand_public = ComandFactory.CreateCommand(Type.Others, main, main.Player_list[number_player_turn]);
+                                boxinvoker.setcommand(boxcommand_public);
+                                boxinvoker.ExecuteCommand();
+                                break;
                             default:
-                                Console.WriteLine("pas encore");
+                                Console.WriteLine("Type de case inconnu");
                                 break;
                         }
 
                     }
                     number_player_turn++;
-                    if (number_player_turn >= main.Player_list.Length)
+                    if (number_player_turn >= main.Player_list.Count)
                     {
                         number_player_turn = 0;
                     }
@@ -109,7 +119,7 @@ namespace Monopoly_game
                 {
                     win = true;
                     Console.WriteLine("Fin");
-                    for (int j = 0; j < main.Player_list.Length; j++)
+                    for (int j = 0; j < main.Player_list.Count; j++)
                     {
                         Console.WriteLine(main.Player_list[j].Pseudo + " a " + main.Player_list[j].Balance + " euros");
                     }
@@ -118,14 +128,14 @@ namespace Monopoly_game
             }
         }
 
-        static int chooseFirstPlayer(Player[] List_Player)
+        static int chooseFirstPlayer(List<Player> List_Player)
         {
             Console.WriteLine("Lancer les dées pour choisir le joueur qui commence en premier : ");
             Random rand = new Random();                    // Sinon on obtient toujours les mêmes nombres (si on crée un nouveau random à chaque fois
             Command command;
             DiceInvoker diceinvoker = new DiceInvoker();
             int first_player = 0;
-            for (int i = 0; i < List_Player.Length; i++)  // We use our command launchdice, we don't forget to reset plaer's index on the board 
+            for (int i = 0; i < List_Player.Count; i++)  // We use our command launchdice, we don't forget to reset plaer's index on the board 
             {
                 command = new Dice(List_Player[i], rand);
                 diceinvoker.LaunchDice(command);
@@ -138,11 +148,11 @@ namespace Monopoly_game
             }
             //In case of two person have same highest value we have to redo with less player
             bool redo = false;
-            Player[] potentialredo = new Player[List_Player.Length];
+            List<Player> potentialredo = new List<Player>();
             int index = 0;
-            potentialredo[index] = List_Player[first_player];
+            potentialredo.Add(List_Player[first_player]);
             index++;
-            for (int i = 0; i < List_Player.Length; i++)
+            for (int i = 0; i < List_Player.Count; i++)
             {
                 if (List_Player[i].Index == List_Player[first_player].Index && first_player != i)
                 {

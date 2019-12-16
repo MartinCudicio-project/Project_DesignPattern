@@ -102,7 +102,6 @@ namespace Monopoly_game
                         property.Owner.Balance += rent;
                         player.Balance -= rent;
                         Console.WriteLine(player.Pseudo + " a payé " + rent + " a " + property.Owner.Pseudo);
-
                     }
                 }
             }

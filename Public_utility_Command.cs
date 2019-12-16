@@ -31,10 +31,36 @@ namespace Monopoly_game
                         compteur++;
                     }
                 }
-               // 4 et 10
-                //if(public_util.Owner)
+                if(public_util.Owner == null)
+                {
+                    string cout = "" + public_util.Buying_prize;
+                    string solde = "" + player.Balance;
+                    string[] texte = { "Voulez vous achetez ? Cout : " + cout + "\nVotre solde est de " + solde, "Oui", "Non" };
+                    int choix = Menu.Selection_avec_Consigne(texte);
 
-                
+                    if (choix == 0)
+                    {
+                        public_util.Owner = player;
+                        player.Property_list.Add(public_util);
+                        player.Balance -= public_util.Buying_prize;
+                        Console.WriteLine(player.Pseudo + " a acheté la propriete : " + public_util.Name + " pour " + public_util.Buying_prize + " euros");
+                    }
+                }
+                else
+                {
+                    if(player != public_util.Owner)
+                    {
+                        int rent = public_util.Rent;
+                        if (compteur == 2)
+                        {
+                            rent = 7;
+                        }
+                        public_util.Owner.Balance += rent;
+                        player.Balance -= rent;
+                        Console.WriteLine(player.Pseudo + " a payé " + rent + " a " + public_util.Owner.Pseudo);
+
+                    }
+                } 
             }
         }
     }

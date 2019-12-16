@@ -52,6 +52,7 @@
     <Compile Include="Property.cs" />
     <Compile Include="PropertyCommand.cs" />
     <Compile Include="Public_utility.cs" />
+    <Compile Include="Public_utility_Command.cs" />
     <Compile Include="SwitchFactoryCommand.cs" />
     <Compile Include="SwitchInvokerFactory.cs" />
     <Compile Include="Taxes.cs" />

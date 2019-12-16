@@ -13,7 +13,7 @@ namespace Monopoly_game
     {
         private List<Box> board;
         private int common_pot;
-        private Player[] player_list;
+        private List<Player> player_list;
         private static readonly Game instance = new Game();
         private int first_player;
         private Game()
@@ -27,9 +27,9 @@ namespace Monopoly_game
         public static Game Instance => instance;
 
         public int Common_pot { get => common_pot; set => common_pot = value; }
-        public Player[] Player_list { get => player_list; set => player_list = value; }
         internal List<Box> Board { get => board; set => board = value; }
         public int First_player { get => first_player; set => first_player = value; }
+        internal List<Player> Player_list { get => player_list; set => player_list = value; }
 
         public void  create_player()
         {
@@ -42,14 +42,14 @@ namespace Monopoly_game
                 Console.WriteLine("Selectionnez le nombre de joueurs (entre 2 et 8)");
                 choix = Convert.ToInt32(Console.ReadLine());
             }
-            Player [] List_player = new Player[choix];
+            List<Player> List_player = new List<Player>();
             for (int i = 0; i < choix ;i++)
             {
                 Console.WriteLine("Joueur "+(i+1)+" entrez votre nom");
                 nom = Console.ReadLine();
-                List_player[i] = new Player(nom, null);
+                List_player.Add(new Player(nom, null));
             }
-            this.player_list = List_player;
+            this.Player_list = List_player;
         }
        
         public List<Box> createBoard()  // Not a factory but it creates in he simple way each box of the board

@@ -29,7 +29,10 @@ namespace Monopoly_game
                 case Type.Event:
                     return new EventCommand(main.Board[player.Index], player);
                     break;
-               
+                case Type.Public:
+                    return new Public_utility_Command( player, main.Board[player.Index]);
+                    break;
+
 
                 default:
                     throw new NotImplementedException();
