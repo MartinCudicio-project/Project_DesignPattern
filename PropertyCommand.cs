@@ -74,6 +74,7 @@ namespace Monopoly_game
                 {
                     if (player == property.Owner)
                     {
+                        Console.WriteLine("Vous etes chez vous");
                         if (countproperty() == true && property.House_number < 4)
                         {
                             int cout_int = property.House_prize;

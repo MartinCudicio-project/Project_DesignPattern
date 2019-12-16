@@ -23,6 +23,6 @@ namespace Monopoly_game
         public int Buying_prize { get => buying_prize; set => buying_prize = value; }
         public int Rent { get => rent; set => rent = value; }
         public int Mortgage { get => mortgage; set => mortgage = value; }
-        internal Player Owner { get => Owner; set => Owner = value; }
+        public  Player Owner { get => owner; set => owner = value; }
     }
 }

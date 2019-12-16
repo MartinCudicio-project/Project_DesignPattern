@@ -24,8 +24,8 @@ namespace Monopoly_game
 
         public void Execute()
         {
-            this.dice1 = rand.Next(6);
-            this.dice2 = rand.Next(6);
+            this.dice1 = rand.Next(1,6);
+            this.dice2 = rand.Next(1,6);
             if (dice1 == dice2)
             {
                 this.player.Double++;
@@ -35,15 +35,36 @@ namespace Monopoly_game
                 this.player.Double = 0;
             }
             int resultat = dice1 + dice2;
-            Console.WriteLine("Lancées des dées du joueur....\nResultats : " + dice1 + " + " + dice2 + " = " + resultat);
-            if(this.player.Double == 3)
+            string[] texte = { "Lancer les dées","Regarder votre solde" };
+            int choix = Menu.Selection_sans_Consigne(texte);
+            if(choix == 1)
+            {
+                Console.WriteLine("Solde de " + this.player.Pseudo + "a " + this.player.Balance + "euros");
+            }
+            Console.WriteLine("Lancées des dées du joueur "+player.Pseudo+ "\nResultats : " + dice1 + " + " + dice2 + " = " + resultat);
+            if (this.player.Double == 3)
             {
                 player.Emprisoned = true;
                 player.Index = 10;
                 Console.WriteLine(player.Pseudo + " est emprisoné");
+                player.Double = 0;
             }
-            player.Index = dice1 + dice2;
+            else
+            {
+                if((player.Index + dice1 + dice2) < 40)
+                {
+                    player.Index += dice1 + dice2;
+                }
+                else
+                {
+                    player.Index = (dice1 + dice2) - (40 - player.Index);
+                    Console.WriteLine("Vous passez par la cas edépart recevez 200 euros");
+                    this.player.Balance += 200;
+                }
+
+             }
             
+        
         }
     }
 
@@ -65,8 +86,8 @@ namespace Monopoly_game
 
         public void Execute()
         {
-            this.dice1 = rand.Next(6);
-            this.dice2 = rand.Next(6);
+            this.dice1 = rand.Next(1,6);
+            this.dice2 = rand.Next(1,6);
             int resultat = dice1 + dice2;
             Console.WriteLine("Lancées des dées du joueur " + player.Pseudo + "\nResultats : " + dice1 + " + " + dice2 + " = " + resultat); 
             if (dice1 == dice2)
@@ -110,8 +131,8 @@ namespace Monopoly_game
 
         public void Execute()
         {
-            this.dice1 = rand.Next(6);
-            this.dice2 = rand.Next(6);
+            this.dice1 = rand.Next(1,6);
+            this.dice2 = rand.Next(1,6);
             int resultat = dice1 + dice2;
             Console.WriteLine("Lancées des dées du joueur pour la case event " + player.Pseudo + "\nResultats : " + dice1 + " + " + dice2 + " = " + resultat);
             if(this.chance == true)

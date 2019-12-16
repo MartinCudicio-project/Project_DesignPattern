@@ -9,22 +9,19 @@ namespace Monopoly_game
         {
 
             Console.WriteLine("Hello bienvenue dans le monopoly");
-            Initialisation();
-            //Menu.Selection_avec_Consigne(null);
-            //MainGame();
-
+            Game_controller();
             Console.ReadKey();
-
+            
         }
 
-        static void Initialisation()
+        static void Game_controller()
         {
             // Data necessaire :
             Type[] boardtype = { Type.Others, Type.Property, Type.Event, Type.Property, Type.Taxes, Type.Gare, Type.Property, Type.Event, Type.Property, Type.Property, Type.Others, 
                 Type.Property, Type.Public,Type.Property,Type.Property,Type.Gare,Type.Property,Type.Event,Type.Property,Type.Property,Type.Others,
                 Type.Property,Type.Event,Type.Property,Type.Property,Type.Gare,Type.Property,Type.Property,Type.Public,Type.Property,Type.Others,Type.Property,Type.Property,
                 Type.Event,Type.Property,Type.Gare,Type.Event,Type.Property,Type.Taxes,Type.Property};
-            
+
             ///Initialisation
             Game main = Game.Instance;
             main.create_player();
@@ -52,13 +49,21 @@ namespace Monopoly_game
                     Console.WriteLine("\nAu tour de " + main.Player_list[number_player_turn].Pseudo);  // if player si in prison
                     if(main.Player_list[number_player_turn].Balance < 0)                               // As we explain we don't put hypotheque function so here we eliminate player with negative balance
                     {
-                        
-
+                        main.Player_list.Remove(main.Player_list[number_player_turn]);
+                        if (number_player_turn >= main.Player_list.Count)
+                        {
+                            number_player_turn = 0;
+                        }
+                        else
+                        {
+                            number_player_turn++;
+                        }                   
                     }
-                    if (main.Player_list[number_player_turn].Emprisoned == true)
+
+                    if (main.Player_list[number_player_turn].Emprisoned == true)               
                     {
                         Console.WriteLine(main.Player_list[number_player_turn].Pseudo + " est en prison");
-                        Command command = new EmprisonedDice(main.Player_list[number_player_turn], rand);
+                        Command command = new EmprisonedDice(main.Player_list[i], rand);
                         diceinvoker.LaunchDice(command);
                         diceinvoker.ExecuteCommand();
                     }
@@ -71,7 +76,7 @@ namespace Monopoly_game
                         //Choix des actions
                         position = main.Player_list[number_player_turn].Index;
                         case_actual = main.Board[position];
-                        Console.WriteLine("\nArrivée sur la case " + case_actual.Name);
+                        Console.WriteLine("\nArrivée sur la case " + case_actual.Name+"\n");
                         switch (boardtype[position])
                         {
                             case Type.Taxes:
@@ -95,33 +100,56 @@ namespace Monopoly_game
                                 boxinvoker.ExecuteCommand();
                                 break;
                             case Type.Public:
-                                BoxCommand boxcommand_public = ComandFactory.CreateCommand(Type.Others, main, main.Player_list[number_player_turn]);
+                                BoxCommand boxcommand_public = ComandFactory.CreateCommand(Type.Public, main, main.Player_list[number_player_turn]);
                                 boxinvoker.setcommand(boxcommand_public);
+                                boxinvoker.ExecuteCommand();
+                                break;
+                            case Type.Event:
+                                BoxCommand boxcommand_event = ComandFactory.CreateCommand(Type.Event, main, main.Player_list[i]);
+                                boxinvoker.setcommand(boxcommand_event);
                                 boxinvoker.ExecuteCommand();
                                 break;
                             default:
                                 Console.WriteLine("Type de case inconnu");
+                                Console.WriteLine(boardtype[position]);
                                 break;
                         }
 
-                    }
-                    number_player_turn++;
+                        if (main.Player_list[number_player_turn].Balance < 0)                               // As we explain we don't put hypotheque function so here we eliminate player with negative balance, we need to put here too
+                        {
+                            Console.WriteLine(main.Player_list[number_player_turn] + "est eliminé");
+                            main.Player_list.Remove(main.Player_list[number_player_turn]);
+                            Console.WriteLine(main.Player_list.Count);
+                            if (number_player_turn >= main.Player_list.Count)
+                            {
+                                number_player_turn = 0;
+                                Console.WriteLine(main.Player_list.Count);
+                            }
+                            else
+                            {
+                                number_player_turn++;
+                            }
+                        }
+                        else
+                        {
+                            number_player_turn++;
+                        }
+
+                    }                   
                     if (number_player_turn >= main.Player_list.Count)
                     {
                         number_player_turn = 0;
                     }
                 }
-
-                //Console.Clear();
                 
                 turn_number++;
-                if(turn_number == 50)
+                if(main.Player_list.Count  == 1)
                 {
                     win = true;
                     Console.WriteLine("Fin");
                     for (int j = 0; j < main.Player_list.Count; j++)
                     {
-                        Console.WriteLine(main.Player_list[j].Pseudo + " a " + main.Player_list[j].Balance + " euros");
+                        Console.WriteLine(main.Player_list[j].Pseudo + " a gagné avec " + main.Player_list[j].Balance + " euros");
                     }
                 }
                 
@@ -157,7 +185,7 @@ namespace Monopoly_game
                 if (List_Player[i].Index == List_Player[first_player].Index && first_player != i)
                 {
                     redo = true;
-                    potentialredo[index] = List_Player[i];
+                    potentialredo.Add(List_Player[i]);
                     index++;
                 }
             }
@@ -165,6 +193,10 @@ namespace Monopoly_game
             {               
                 Console.Clear();
                 Console.WriteLine("Premier joueur a jouer : " + List_Player[first_player].Pseudo);
+                foreach(Player p in List_Player)
+                {
+                    p.Index = 0;
+                }              
                 return first_player;
             }
             else

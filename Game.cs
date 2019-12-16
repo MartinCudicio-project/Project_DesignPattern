@@ -34,16 +34,10 @@ namespace Monopoly_game
         public void  create_player()
         {
             string nom = "";
-            Console.WriteLine("Selectionnez le nombre de joueurs (entre 2 et 8)");
-            int choix = Convert.ToInt32(Console.ReadLine());
-            while (choix > 8 || choix < 2) 
-            {
-                Console.WriteLine("Choix incorrect");
-                Console.WriteLine("Selectionnez le nombre de joueurs (entre 2 et 8)");
-                choix = Convert.ToInt32(Console.ReadLine());
-            }
+            string[] consigne = { "Selectionnez le nombre de joueurs (entre 2 et 8)", "2", "3", "4", "5", "6", "7", "8" };
+            int choix = Menu.Selection_avec_Consigne(consigne);
             List<Player> List_player = new List<Player>();
-            for (int i = 0; i < choix ;i++)
+            for (int i = 0; i < choix+2 ;i++)
             {
                 Console.WriteLine("Joueur "+(i+1)+" entrez votre nom");
                 nom = Console.ReadLine();

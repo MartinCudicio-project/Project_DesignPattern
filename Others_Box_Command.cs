@@ -40,6 +40,7 @@ namespace Monopoly_game
                         Console.WriteLine("Case aller en prison : vous allez en prison sans passez par la case départ");
                         this.player.Index = 10;
                         this.player.Emprisoned = true;
+                        this.player.Double = 0;
                         break;
                 }
             }
