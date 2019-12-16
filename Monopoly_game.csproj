@@ -31,9 +31,7 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
+
     <Compile Include="Game.cs" />
     <Compile Include="Box.cs" />
     <Compile Include="Card.cs" />
@@ -41,8 +39,6 @@
     <Compile Include="gare_station.cs" />
     <Compile Include="Others_Box.cs" />
     <Compile Include="Player.cs" />
->>>>>>> Stashed changes
-=======
     <Compile Include="Box.cs" />
     <Compile Include="BoxCommand.cs" />
     <Compile Include="Card.cs" />
@@ -59,7 +55,6 @@
     <Compile Include="Others_Box.cs" />
     <Compile Include="Others_Box_Command.cs" />
     <Compile Include="Player.cs" />
->>>>>>> final
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Property.cs" />
