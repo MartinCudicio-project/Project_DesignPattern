@@ -11,7 +11,7 @@ namespace Monopoly_game
        
         public enum Type { Taxes, Others, Property, Event, Gare, Public };
 
-        public abstract BoxInvoker CreateInvoker(Type type);
+        public abstract BoxInvoker CreateInvoker();
         
     }
 }

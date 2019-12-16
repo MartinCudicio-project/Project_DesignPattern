@@ -6,21 +6,12 @@ using System.Threading.Tasks;
 
 namespace Monopoly_game
 {
-    class SwitchInvokerFactory : InvokerFactory
+    class SwitchInvokerFactory : InvokerFactory         // On a pas besoin de factory pour les invoker puisque toutes nos commandes sont de la même famille
     {
   
-        public override BoxInvoker CreateInvoker(Type type)
+        public override BoxInvoker CreateInvoker()
         {
-
-            switch (type)
-            {
-                case Type.Taxes:
-                    return new TaxesInvoker();
-                    break;
-
-                default:
-                    throw new NotImplementedException();
-            }
+            return new Invoker();
         }
         
     }

@@ -10,20 +10,18 @@ namespace Monopoly_game
     {
         private int buying_prize;
         private int mortgage;
+        private Player owner;
 
         public gare_station(int buying_prize,int mortgage, string name,string display) : base (name,display)
         {
             this.Buying_prize = buying_prize;
             this.Mortgage = mortgage;
+            this.Owner = null;
         }
 
         public int Buying_prize { get => buying_prize; set => buying_prize = value; }
         public int Mortgage { get => mortgage; set => mortgage = value; }
+        internal Player Owner { get => owner; set => owner = value; }
 
-        public override int[] returnvalue()
-        {
-            int[] data = { this.buying_prize, this.mortgage };
-            return data;
-        }
     }
 }

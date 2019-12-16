@@ -12,9 +12,10 @@ namespace Monopoly_game
         private int balance;
         private List<Box> property_list;
         private string image;
-        private List<Card> card_list;
         private int index;
         private int _double;
+        private int number_gare;
+        private bool emprisoned;
 
         public Player(string pseudo,string image)
         {
@@ -22,8 +23,10 @@ namespace Monopoly_game
             this.Balance = 1500;
             this.Property_list = new List<Box>();
             this.Image = image;
-            this.Card_list = new List<Card>();
             this.index = 0;
+            this.number_gare = 0;
+            this.Emprisoned = false;
+
         }
 
         public string Pseudo { get => pseudo; set => pseudo = value; }
@@ -31,7 +34,8 @@ namespace Monopoly_game
         public string Image { get => image; set => image = value; }
         public int Index { get => index; set => index = value; }
         public int Double { get => _double; set => _double = value; }
+        public int Number_gare { get => number_gare; set => number_gare = value; }
+        public bool Emprisoned { get => emprisoned; set => emprisoned = value; }
         internal List<Box> Property_list { get => property_list; set => property_list = value; }
-        internal List<Card> Card_list { get => card_list; set => card_list = value; }
     }
 }

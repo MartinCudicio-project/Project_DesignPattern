@@ -16,10 +16,6 @@ namespace Monopoly_game
         }
         public int Taxe { get => taxe; set => taxe = value; }
 
-        public override int[] returnvalue()
-        {
-            int[] data = { this.taxe};
-            return data;
-        }
+
     }
 }

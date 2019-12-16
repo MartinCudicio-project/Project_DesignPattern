@@ -16,12 +16,6 @@ namespace Monopoly_game
         }
 
         public string Description { get => description; set => description = value; }
-
-        public override int[] returnvalue()
-        {
-            return null;
-        }
-
     
      }
 

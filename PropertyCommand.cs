@@ -12,10 +12,42 @@ namespace Monopoly_game
         private Box box;
         private Player player;
 
-        public PropertyCommand(Player player, Box box)
+        public PropertyCommand(Player player, Box box)  
         {
             this.box = box;
             this.player = player;
+        }
+
+        public bool countproperty()
+        {
+            int compteur = 0;
+            bool complete = false;
+            List<Box> list_box = player.Property_list;
+            string color = "";
+            foreach(Box p in list_box)
+            {
+                if (this.box is Property && p is Property)
+                {
+                    Property list_box_item = (Property)p;
+                    Property actual_box = (Property)this.box;
+                    if(actual_box.Color == list_box_item.Color)
+                    {
+                        compteur++;
+                    }
+                    color = actual_box.Color;
+                }
+                
+            } 
+            if(color == "bleu marine" && compteur == 2)
+            {
+                complete = true;
+            }
+            else if(compteur == 3)
+            {
+                complete = true;
+            }
+
+            return complete;
         }
 
         public void Execute()
@@ -40,12 +72,37 @@ namespace Monopoly_game
                 }
                 else
                 {
-                    int rent = property.Rents[property.House_number];
-                    if(player.Balance > rent)
+                    if (player == property.Owner)
                     {
+                        if (countproperty() == true && property.House_number < 4)
+                        {
+                            int cout_int = property.House_prize;
+                            string cout = "" + property.House_prize;
+                            string solde = "" + player.Balance;
+                            string[] texte = { "Voulez vous une maison ? Cout : " + cout + "\nVotre solde est de " + solde, "Oui", "Non" };
+                            int choix = Menu.Selection_avec_Consigne(texte);
+                            string[] texte2 = { "Combien de maison : " + cout + "\nVotre solde est de " + solde, "1", "2","3","4"};
+                            int choix2 = Menu.Selection_avec_Consigne(texte2)+1;
+                            if(cout_int*choix2 > player.Balance)
+                            {
+                                Console.WriteLine("Vous n'avez pas l'argent");
+
+                            }
+                            else
+                            {
+                                player.Balance -= cout_int * choix2;
+                                Console.WriteLine("Vous avez achetez "+choix2+ " maisons");
+                            }
+
+                        }
+                    }
+                    else
+                    {
+                        int rent = property.Rents[property.House_number];
                         property.Owner.Balance += rent;
                         player.Balance -= rent;
                         Console.WriteLine(player.Pseudo + " a payé " + rent + " a " + property.Owner.Pseudo);
+
                     }
                 }
             }

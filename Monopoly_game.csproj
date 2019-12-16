@@ -31,7 +31,6 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Board.cs" />
     <Compile Include="Box.cs" />
     <Compile Include="BoxCommand.cs" />
     <Compile Include="Card.cs" />
@@ -39,10 +38,14 @@
     <Compile Include="CommandFactory.cs" />
     <Compile Include="Dice.cs" />
     <Compile Include="Event.cs" />
+    <Compile Include="EventCommand.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="gare_station.cs" />
+    <Compile Include="Gare_station_Command.cs" />
+    <Compile Include="Invoker.cs" />
     <Compile Include="InvokerFactory.cs" />
     <Compile Include="Others_Box.cs" />
+    <Compile Include="Others_Box_Command.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -32,6 +32,7 @@ namespace Monopoly_game
 
             Random rand = new Random();                    // Sinon on obtient toujours les mêmes nombres (si on cree un nouveau random a chaque fois)
             DiceInvoker diceinvoker = new DiceInvoker();   // Le invoker pour les lancées de dées, pour le command pattern
+
             int number_player_turn = main.First_player;
             bool win = false;
             int turn_number = 1;
@@ -39,43 +40,61 @@ namespace Monopoly_game
             SwitchInvokerFactory InvokerFactory = new SwitchInvokerFactory();
             int position = 0;
             Box case_actual;
+            BoxInvoker boxinvoker = InvokerFactory.CreateInvoker();
 
             while (win != true)
             {
-                Console.WriteLine("Tour numero " + turn_number);
+                Console.WriteLine("\nTour numero " + turn_number);
                 for(int i = number_player_turn; i < main.Player_list.Length+number_player_turn; i ++)
                 {
                    
                     ///Debut du tour
-                    Console.WriteLine("\nAu tour de " + main.Player_list[number_player_turn].Pseudo);
-                    Command command = new Dice(main.Player_list[number_player_turn], rand);                   
-                    diceinvoker.LaunchDice(command);
-                    diceinvoker.ExecuteCommand();
-
-                    //Choix des actions
-                    position = main.Player_list[number_player_turn].Index;
-                    case_actual = main.Board[position];
-                    Console.WriteLine("\nArrivée sur la case " + case_actual.Name);
-                    switch (boardtype[position])
+                    Console.WriteLine("\nAu tour de " + main.Player_list[number_player_turn].Pseudo);  // if player si in prison
+                    if (main.Player_list[number_player_turn].Emprisoned == true)
                     {
-                        case Type.Taxes:
-                            BoxCommand boxcommand = ComandFactory.CreateCommand(Type.Taxes, main, main.Player_list[number_player_turn]);
-                            BoxInvoker boxinvoker = InvokerFactory.CreateInvoker(Monopoly_game.InvokerFactory.Type.Taxes);
-                            boxinvoker.setcommand(boxcommand);
-                            boxinvoker.ExecuteCommand();
-                            break;
-                        case Type.Property:
-                            BoxCommand boxcommand_property = ComandFactory.CreateCommand(Type.Property, main, main.Player_list[number_player_turn]);
-                            BoxInvoker boxinvoker_property = InvokerFactory.CreateInvoker(Monopoly_game.InvokerFactory.Type.Taxes);
-                            boxinvoker_property.setcommand(boxcommand_property);
-                            boxinvoker_property.ExecuteCommand();
-                            break;
-                        default:
-                            Console.WriteLine("pas encore");
-                            break;
+                        Console.WriteLine(main.Player_list[number_player_turn].Pseudo + " est en prison");
+                        Command command = new EmprisonedDice(main.Player_list[number_player_turn], rand);
+                        diceinvoker.LaunchDice(command);
+                        diceinvoker.ExecuteCommand();
                     }
+                    else
+                    {
+                        Command command = new Dice(main.Player_list[number_player_turn], rand);
+                        diceinvoker.LaunchDice(command);
+                        diceinvoker.ExecuteCommand();
 
+                        //Choix des actions
+                        position = main.Player_list[number_player_turn].Index;
+                        case_actual = main.Board[position];
+                        Console.WriteLine("\nArrivée sur la case " + case_actual.Name);
+                        switch (boardtype[position])
+                        {
+                            case Type.Taxes:
+                                BoxCommand boxcommand = ComandFactory.CreateCommand(Type.Taxes, main, main.Player_list[number_player_turn]);
+                                boxinvoker.setcommand(boxcommand);
+                                boxinvoker.ExecuteCommand();
+                                break;
+                            case Type.Property:
+                                BoxCommand boxcommand_property = ComandFactory.CreateCommand(Type.Property, main, main.Player_list[number_player_turn]);
+                                boxinvoker.setcommand(boxcommand_property);
+                                boxinvoker.ExecuteCommand();
+                                break;
+                            case Type.Gare:
+                                BoxCommand boxcommand_gare = ComandFactory.CreateCommand(Type.Gare, main, main.Player_list[number_player_turn]);
+                                boxinvoker.setcommand(boxcommand_gare);
+                                boxinvoker.ExecuteCommand();
+                                break;
+                            case Type.Others:
+                                BoxCommand boxcommand_other = ComandFactory.CreateCommand(Type.Others, main, main.Player_list[number_player_turn]);
+                                boxinvoker.setcommand(boxcommand_other);
+                                boxinvoker.ExecuteCommand();
+                                break;
+                            default:
+                                Console.WriteLine("pas encore");
+                                break;
+                        }
 
+                    }
                     number_player_turn++;
                     if (number_player_turn >= main.Player_list.Length)
                     {
@@ -86,10 +105,14 @@ namespace Monopoly_game
                 //Console.Clear();
                 
                 turn_number++;
-                if(turn_number == 4)
+                if(turn_number == 50)
                 {
                     win = true;
                     Console.WriteLine("Fin");
+                    for (int j = 0; j < main.Player_list.Length; j++)
+                    {
+                        Console.WriteLine(main.Player_list[j].Pseudo + " a " + main.Player_list[j].Balance + " euros");
+                    }
                 }
                 
             }

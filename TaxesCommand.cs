@@ -21,17 +21,13 @@ namespace Monopoly_game
 
         public void Execute()
         {
-            this.taxes = box.returnvalue()[0];
-            if (player.Balance-taxes> 0)
+            if (this.box is Taxes)
             {
+                Taxes taxe = (Taxes)box;
+                this.taxes = taxe.Taxe;
                 player.Balance -= taxes;
                 Console.WriteLine(player.Pseudo + " paye " + taxes + " pour la case " + taxes);
                 Console.WriteLine("Compte actuel : " + player.Balance);
-            }
-            else
-            {
-                Console.WriteLine("Joueur eliminé");
-
             }
         }
     }
