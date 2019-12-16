@@ -13,6 +13,10 @@ namespace Monopoly_game
         {
             
         }
-
+        public override int[] returnvalue()
+        {
+            int[] data = { };
+            return data;
+        }
     }
 }

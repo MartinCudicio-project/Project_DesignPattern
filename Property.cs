@@ -34,5 +34,12 @@ namespace Monopoly_game
         public int[] Rents { get => rents; set => rents = value; }
         public string Color { get => color; set => color = value; }
         public int House_number { get => house_number; set => house_number = value; }
+
+        public override int[] returnvalue()
+        {
+            int[] data = { this.buying_prize, this.mortgage,this.House_prize };
+            return data;
+        }
+
     }
 }

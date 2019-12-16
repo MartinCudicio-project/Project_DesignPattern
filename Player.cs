@@ -10,9 +10,9 @@ namespace Monopoly_game
     {
         private string pseudo;
         private int balance;
-        private Box[] property_list;
+        private List<Box> property_list;
         private string image;
-        private Card[] card_list;
+        private List<Card> card_list;
         private int index;
         private int _double;
 
@@ -20,9 +20,9 @@ namespace Monopoly_game
         {
             this.Pseudo = pseudo;
             this.Balance = 1500;
-            this.Property_list = null;
+            this.Property_list = new List<Box>();
             this.Image = image;
-            this.Card_list = null;
+            this.Card_list = new List<Card>();
             this.index = 0;
         }
 
@@ -31,7 +31,7 @@ namespace Monopoly_game
         public string Image { get => image; set => image = value; }
         public int Index { get => index; set => index = value; }
         public int Double { get => _double; set => _double = value; }
-        internal Box[] Property_list { get => property_list; set => property_list = value; }
-        internal Card[] Card_list { get => card_list; set => card_list = value; }
+        internal List<Box> Property_list { get => property_list; set => property_list = value; }
+        internal List<Card> Card_list { get => card_list; set => card_list = value; }
     }
 }

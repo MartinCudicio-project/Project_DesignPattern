@@ -8,12 +8,9 @@ namespace Monopoly_game
         public static void Main(string[] args)
         {
 
-            Console.WriteLine("Hello World MArtin !!!");
-
-
+            Console.WriteLine("Hello bienvenue dans le monopoly");
             Initialisation();
-
-            Menu.Selection_avec_Consigne(null);
+            //Menu.Selection_avec_Consigne(null);
             //MainGame();
 
             Console.ReadKey();
@@ -22,6 +19,12 @@ namespace Monopoly_game
 
         static void Initialisation()
         {
+            // Data necessaire :
+            Type[] boardtype = { Type.Others, Type.Property, Type.Event, Type.Property, Type.Taxes, Type.Gare, Type.Property, Type.Event, Type.Property, Type.Property, Type.Others, 
+                Type.Property, Type.Public,Type.Property,Type.Property,Type.Gare,Type.Property,Type.Event,Type.Property,Type.Property,Type.Others,
+                Type.Property,Type.Event,Type.Property,Type.Property,Type.Gare,Type.Property,Type.Property,Type.Public,Type.Property,Type.Others,Type.Property,Type.Property,
+                Type.Event,Type.Property,Type.Gare,Type.Event,Type.Property,Type.Taxes,Type.Property};
+            
             ///Initialisation
             Game main = Game.Instance;
             main.create_player();
@@ -32,37 +35,65 @@ namespace Monopoly_game
             int number_player_turn = main.First_player;
             bool win = false;
             int turn_number = 1;
-            while(win != true)
-            {
+            SwitchFactoryCommand ComandFactory = new SwitchFactoryCommand();
+            SwitchInvokerFactory InvokerFactory = new SwitchInvokerFactory();
+            int position = 0;
+            Box case_actual;
 
-                for(int i = number_player_turn; i < main.Player_list.Length+main.First_player; i ++)
+            while (win != true)
+            {
+                Console.WriteLine("Tour numero " + turn_number);
+                for(int i = number_player_turn; i < main.Player_list.Length+number_player_turn; i ++)
                 {
-                    if(i > main.Player_list.Length)
-                    {
-                        number_player_turn -= main.Player_list.Length;
-                    }
+                   
                     ///Debut du tour
-                    Console.WriteLine("Au tour de " + main.Player_list[number_player_turn].Pseudo);
-                    Command command = new Dice(main.Player_list[number_player_turn], rand);
-                    
+                    Console.WriteLine("\nAu tour de " + main.Player_list[number_player_turn].Pseudo);
+                    Command command = new Dice(main.Player_list[number_player_turn], rand);                   
                     diceinvoker.LaunchDice(command);
                     diceinvoker.ExecuteCommand();
-                    Console.WriteLine(main.Player_list[number_player_turn].Index); 
+
+                    //Choix des actions
+                    position = main.Player_list[number_player_turn].Index;
+                    case_actual = main.Board[position];
+                    Console.WriteLine("\nArrivée sur la case " + case_actual.Name);
+                    switch (boardtype[position])
+                    {
+                        case Type.Taxes:
+                            BoxCommand boxcommand = ComandFactory.CreateCommand(Type.Taxes, main, main.Player_list[number_player_turn]);
+                            BoxInvoker boxinvoker = InvokerFactory.CreateInvoker(Monopoly_game.InvokerFactory.Type.Taxes);
+                            boxinvoker.setcommand(boxcommand);
+                            boxinvoker.ExecuteCommand();
+                            break;
+                        case Type.Property:
+                            BoxCommand boxcommand_property = ComandFactory.CreateCommand(Type.Property, main, main.Player_list[number_player_turn]);
+                            BoxInvoker boxinvoker_property = InvokerFactory.CreateInvoker(Monopoly_game.InvokerFactory.Type.Taxes);
+                            boxinvoker_property.setcommand(boxcommand_property);
+                            boxinvoker_property.ExecuteCommand();
+                            break;
+                        default:
+                            Console.WriteLine("pas encore");
+                            break;
+                    }
 
 
+                    number_player_turn++;
+                    if (number_player_turn >= main.Player_list.Length)
+                    {
+                        number_player_turn = 0;
+                    }
                 }
 
-
-
-                number_player_turn++;
+                //Console.Clear();
+                
                 turn_number++;
                 if(turn_number == 4)
                 {
                     win = true;
+                    Console.WriteLine("Fin");
                 }
                 
             }
-            }
+        }
 
         static int chooseFirstPlayer(Player[] List_Player)
         {
@@ -98,9 +129,9 @@ namespace Monopoly_game
                 }
             }
             if (redo == false)
-            {
-                Console.WriteLine("\nPremier joueur a jouer : Joueur "
-                    + (first_player+1));
+            {               
+                Console.Clear();
+                Console.WriteLine("Premier joueur a jouer : " + List_Player[first_player].Pseudo);
                 return first_player;
             }
             else

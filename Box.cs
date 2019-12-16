@@ -19,5 +19,7 @@ namespace Monopoly_game
 
         public string Name { get => name; set => name = value; }
         public string Display { get => display; set => display = value; }
+
+        public abstract int[] returnvalue();
     }
 }

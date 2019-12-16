@@ -21,5 +21,11 @@ namespace Monopoly_game
         public int Buying_prize { get => buying_prize; set => buying_prize = value; }
         public int Rent { get => rent; set => rent = value; }
         public int Mortgage { get => mortgage; set => mortgage = value; }
+
+        public override int[] returnvalue()
+        {
+            int[] data = { this.buying_prize, this.mortgage,this.rent };
+            return data;
+        }
     }
 }

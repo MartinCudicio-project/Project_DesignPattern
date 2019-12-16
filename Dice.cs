@@ -39,7 +39,7 @@ namespace Monopoly_game
     class DiceInvoker
     {
         private Command _DiceCommand;
-        public void LaunchDice(Command command)
+        public void LaunchDice(Command command)  //Compare to setcommand
         {
             this._DiceCommand = command;
         }

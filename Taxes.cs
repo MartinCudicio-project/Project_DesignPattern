@@ -15,5 +15,11 @@ namespace Monopoly_game
             this.Taxe = taxe;
         }
         public int Taxe { get => taxe; set => taxe = value; }
+
+        public override int[] returnvalue()
+        {
+            int[] data = { this.taxe};
+            return data;
+        }
     }
 }
