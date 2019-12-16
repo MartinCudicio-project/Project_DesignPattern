@@ -12,11 +12,11 @@ namespace Monopoly_game
         private int mortgage;
         private int house_prize;
         private int[] rents;
-        private string color;
+        private ConsoleColor color;
         private int house_number;
         private Player owner;
 
-        public Property(int buying_prize, int mortgage, int house_prize, int[] rents, string color, int house_number, Player owner, string name, string display) : base(name, display)
+        public Property(int buying_prize, int mortgage, int house_prize, int[] rents, ConsoleColor color, int house_number, Player owner, string name, string display) : base(name, display)
         {
             this.Buying_prize = buying_prize;
             this.Mortgage = mortgage;
@@ -32,8 +32,8 @@ namespace Monopoly_game
         public int Mortgage { get => mortgage; set => mortgage = value; }
         public int House_prize { get => house_prize; set => house_prize = value; }
         public int[] Rents { get => rents; set => rents = value; }
-        public string Color { get => color; set => color = value; }
+      
         public int House_number { get => house_number; set => house_number = value; }
-
+        public ConsoleColor Color { get => color; set => color = value; }
     }
 }

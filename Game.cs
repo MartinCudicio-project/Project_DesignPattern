@@ -57,14 +57,14 @@ namespace Monopoly_game
             Board.Add(Start);
 
             int[] rents = { 2, 10, 30, 90, 160, 250 };
-            Property Boulevard_belleville = new Property(60, 30, 50, rents,"marron", 0, null, "Boulevard De Belleville", null);
+            Property Boulevard_belleville = new Property(60, 30, 50, rents, ConsoleColor.Gray, 0, null, "Boulevard De Belleville", null);
             Board.Add(Boulevard_belleville);
 
             Event communaute1 = new Event(null, "Caisse de Communauté", null);
             Board.Add(communaute1);
 
             int [] rents2 = { 4, 20, 60, 180, 320, 450};
-            Property rue_lecourbe = new Property(60, 30, 50, rents2, "marron", 0, null, "Rue Lecourbe", null);
+            Property rue_lecourbe = new Property(60, 30, 50, rents2, ConsoleColor.Gray, 0, null, "Rue Lecourbe", null);
             Board.Add(rue_lecourbe);
 
             Taxes revenu = new Taxes(200, "Impots sur le revenu", null);
@@ -74,108 +74,111 @@ namespace Monopoly_game
             Board.Add(gare_montparnasse);
 
             int[] rents3 = { 6, 30, 90, 270, 400, 550 };
-            Property rue_vaugirard = new Property(100, 50, 50, rents3, "bleu clair", 0, null, "Rue de Vaugirad", null);
+            Property rue_vaugirard = new Property(100, 50, 50, rents3, ConsoleColor.Blue, 0, null, "Rue de Vaugirad", null);
             Board.Add(rue_vaugirard);
 
             Event chance = new Event(null, "Chance", null);
             Board.Add(chance);
 
             int[] rents4 = { 6, 30, 90, 270, 400, 550 };
-            Property rue_courcelles = new Property(100, 50, 50, rents4, "bleu clair", 0, null, "Rue de Courcelles", null);
+            Property rue_courcelles = new Property(100, 50, 50, rents4, ConsoleColor.Blue, 0, null, "Rue de Courcelles", null);
             Board.Add(rue_courcelles);
 
             int[] rents5 = { 8, 40, 100, 350, 400, 600 };
-            Property avenue_republique = new Property(120, 60, 50, rents5, "bleu clair ", 0, null, "Avenue de la République", null);
+            Property avenue_republique = new Property(120, 60, 50, rents5, ConsoleColor.Blue, 0, null, "Avenue de la République", null);
             Board.Add(avenue_republique);
 
             Others_Box prison = new Others_Box("Prison", null);
             Board.Add(prison);
 
             int[] rents6 = { 10, 50, 150, 425, 625, 750 };
-            Property boulevard_vilette = new Property(140, 70, 100, rents6, "rose", 0, null, "Boulevard de la Villette", null);
+            Property boulevard_vilette = new Property(140, 70, 100, rents6, ConsoleColor.Magenta, 0, null, "Boulevard de la Villette", null);
             Board.Add(boulevard_vilette);
 
             Public_utility electricity = new Public_utility(150, 4, 75, "Compagnie de distribution d'électricité", null);
             Board.Add(electricity);
 
             int[] rents7 = { 10, 50, 150, 425, 625, 750};
-            Property avenue_neuilly = new Property(140, 70, 100, rents7, "rose", 0, null, "Avenue de Neuilly", null);
+            Property avenue_neuilly = new Property(140, 70, 100, rents7, ConsoleColor.Magenta, 0, null, "Avenue de Neuilly", null);
             Board.Add(avenue_neuilly);
 
             int[] rents8 = { 12, 60, 180, 500, 700, 900 };
-            Property rue_paradis = new Property(160, 80, 100, rents8, "rose", 0, null, "Rue du Paradis", null);
+            Property rue_paradis = new Property(160, 80, 100, rents8, ConsoleColor.Magenta
+                
+                
+                , 0, null, "Rue du Paradis", null);
             Board.Add(rue_paradis);
 
             gare_station gare_lyon = new gare_station(200, 100, "Gare de Lyon", null);
             Board.Add(gare_lyon);
 
             int[] rents9 = { 14, 70, 200, 550, 750, 950 };
-            Property avenue_mozart = new Property(160, 80, 100, rents9 ,"orange", 0, null, "Avenue Mozart", null);
+            Property avenue_mozart = new Property(160, 80, 100, rents9 , ConsoleColor.DarkYellow, 0, null, "Avenue Mozart", null);
             Board.Add(avenue_mozart);
 
             Event communaute2 = new Event(null, "Caisse de Communauté", null);
             Board.Add(communaute2);
 
             int[] rents10 = { 14, 70, 200, 550, 750, 950 };
-            Property boulevard_saintmichel = new Property(180, 90, 100, rents10, "orange", 0, null, "Boulevard Saint-Michel", null);
+            Property boulevard_saintmichel = new Property(180, 90, 100, rents10, ConsoleColor.DarkYellow, 0, null, "Boulevard Saint-Michel", null);
             Board.Add(boulevard_saintmichel);
 
             int[] rents11 = { 16, 80, 220, 600, 800, 1000 };
-            Property place_pigalle = new Property(200, 100, 100, rents11, "orange", 0, null, "Place Pigalle", null);
+            Property place_pigalle = new Property(200, 100, 100, rents11, ConsoleColor.DarkYellow, 0, null, "Place Pigalle", null);
             Board.Add(place_pigalle);
 
             Others_Box Park = new Others_Box("Parc gratuit", null);
             Board.Add(Park);
 
             int[] rents12 = { 18, 90, 250, 700, 875, 1050 };
-            Property avenue_matignon = new Property(220, 110, 150, rents12, "rouge", 0, null, "Avenue Matignon", null);
+            Property avenue_matignon = new Property(220, 110, 150, rents12, ConsoleColor.Red, 0, null, "Avenue Matignon", null);
             Board.Add(avenue_matignon);
 
             Event chance2 = new Event(null, "Chance", null);
             Board.Add(chance2);
 
             int[] rents13 = { 18, 90, 250, 700, 875, 1050 };
-            Property boulevard_malsherbes = new Property(220, 110, 150, rents13, "rouge", 0, null, "Boulevard Malsherbes", null);
+            Property boulevard_malsherbes = new Property(220, 110, 150, rents13, ConsoleColor.Red, 0, null, "Boulevard Malsherbes", null);
             Board.Add(boulevard_malsherbes);
 
             int[] rents14 = { 20, 100, 300, 750, 925, 1100 };
-            Property avenue_henri = new Property(240, 120, 150, rents14, "rouge", 0, null, "Avenue Henri-Martin", null);
+            Property avenue_henri = new Property(240, 120, 150, rents14, ConsoleColor.Red, 0, null, "Avenue Henri-Martin", null);
             Board.Add(avenue_henri);
 
             gare_station gare_nord = new gare_station(200, 100, "Gare du Nord", null);
             Board.Add(gare_nord);
 
             int[] rents15 = { 22, 110, 330, 800, 975, 1150 };
-            Property faubourg_saint_honore = new Property(260, 130, 150, rents15, "jaune", 0, null, "Faubourg Saint-Honoré", null);
+            Property faubourg_saint_honore = new Property(260, 130, 150, rents15, ConsoleColor.Yellow, 0, null, "Faubourg Saint-Honoré", null);
             Board.Add(faubourg_saint_honore);
 
             int[] rents16 = { 22, 110, 330, 800, 975, 1150 };
-            Property place_bourse = new Property(260, 130, 150, rents16, "jaune", 0, null, "Place de la Bourse", null);
+            Property place_bourse = new Property(260, 130, 150, rents16, ConsoleColor.Yellow, 0, null, "Place de la Bourse", null);
             Board.Add(place_bourse);
 
             Public_utility water = new Public_utility(150,4, 75, "Compagnie de distribution des eaux", null);
             Board.Add(water);
 
             int[] rents17 = { 24, 120, 360, 850, 1025, 1200 };
-            Property rue_lafayette = new Property(280, 140, 150, rents17, "jaune", 0, null, "Rue la Fayette", null);
+            Property rue_lafayette = new Property(280, 140, 150, rents17, ConsoleColor.Yellow, 0, null, "Rue la Fayette", null);
             Board.Add(rue_lafayette);
 
             Others_Box Aller_prison = new Others_Box("Aller en Prison", null);
             Board.Add(Aller_prison);
 
             int[] rents18 = { 26, 130, 390, 900, 1100, 1275 };
-            Property avenue_breteuil = new Property(300, 150, 200, rents18, "vert", 0, null, "Avenue de Breteuil", null);
+            Property avenue_breteuil = new Property(300, 150, 200, rents18, ConsoleColor.DarkGreen, 0, null, "Avenue de Breteuil", null);
             Board.Add(avenue_breteuil);
 
             int[] rents19 = { 26, 130, 390, 900, 1100, 1275 };
-            Property avenue_foch = new Property(300, 150, 200, rents19, "vert", 0, null, "Avenue Foch", null);
+            Property avenue_foch = new Property(300, 150, 200, rents19, ConsoleColor.DarkGreen, 0, null, "Avenue Foch", null);
             Board.Add(avenue_breteuil);
 
             Event communaute3 = new Event(null, "Caisse de Communauté", null);
             Board.Add(communaute3);
 
             int[] rents20 = { 28, 150, 450, 1000, 1200, 1400 };
-            Property boulevard_capucine = new Property(320, 160, 200, rents20, "vert", 0, null, "Boulevard des Capucines", null);
+            Property boulevard_capucine = new Property(320, 160, 200, rents20, ConsoleColor.DarkGreen, 0, null, "Boulevard des Capucines", null);
             Board.Add(boulevard_capucine);
 
             gare_station gare_saintlaz = new gare_station(200, 100, "Gare Saint-Lazare", null);
@@ -185,19 +188,46 @@ namespace Monopoly_game
             Board.Add(chance3);
 
             int[] rents21 = { 35, 175, 500, 1100, 1300, 1500 };
-            Property avenue_champ_elysees = new Property(350, 175, 200, rents21, "bleu marine", 0, null, "Avenue des Champs-Elysées", null);
+            Property avenue_champ_elysees = new Property(350, 175, 200, rents21, ConsoleColor.DarkBlue, 0, null, "Avenue des Champs-Elysées", null);
             Board.Add(avenue_champ_elysees);
 
             Taxes luxe = new Taxes(100, "Taxe de luxe", null);
             Board.Add(luxe);
 
             int[] rents22 = { 50, 200, 600, 1400, 1700, 2000 };
-            Property rue_paix = new Property(400,200, 200, rents22, "bleu marine", 0, null, "Rue de la Paix", null);
+            Property rue_paix = new Property(400,200, 200, rents22, ConsoleColor.DarkBlue, 0, null, "Rue de la Paix", null);
             Board.Add(rue_paix);
 
             return Board;
         }
 
+        static void Preview_board(int index, Game main)
+        {
+
+            //nous allons recuperer les index avant et apres
+            //nous choisissons d'afficher 5 cases avant et 5 cases apres
+            int first_case = (index - 5) % 40;
+            int last_case = (index + 5) % 40;
+            Console.WriteLine("number | name | owner | house(s)?");
+            for (int i = first_case; i < last_case; i = (i + 1) % 40)
+            {
+                Console.Write(i + " | ");
+                if (main.Board[i] is Property)
+                {
+                    Console.ForegroundColor = ((Property)main.Board[i]).Color;
+                }
+                Console.Write(main.Board[i].Name + " | ");
+                Console.ResetColor();
+                if (main.Board[i] is Property)
+                {
+                    Console.Write(((Property)main.Board[i]).Owner.Pseudo + " | ");
+                }
+                else
+                {
+                    Console.WriteLine(((Property)main.Board[i]).House_number);
+                }
+            }
+        }
     }
         
  

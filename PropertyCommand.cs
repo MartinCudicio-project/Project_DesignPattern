@@ -23,8 +23,8 @@ namespace Monopoly_game
             int compteur = 0;
             bool complete = false;
             List<Box> list_box = player.Property_list;
-            string color = "";
-            foreach(Box p in list_box)
+            ConsoleColor color = ConsoleColor.White;
+            foreach (Box p in list_box)
             {
                 if (this.box is Property && p is Property)
                 {
@@ -38,7 +38,7 @@ namespace Monopoly_game
                 }
                 
             } 
-            if(color == "bleu marine" && compteur == 2)
+            if(color == ConsoleColor.DarkBlue && compteur == 2)
             {
                 complete = true;
             }

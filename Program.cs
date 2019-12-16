@@ -47,6 +47,14 @@ namespace Monopoly_game
                    
                     ///Debut du tour
                     Console.WriteLine("\nAu tour de " + main.Player_list[number_player_turn].Pseudo);  // if player si in prison
+                    string[] texte = { "voulez voir le plateau", "oui", "non" };
+                    int choix = Menu.Selection_avec_Consigne(texte);
+                    if(choix == 0)
+                    {
+                        Preview_board(main.Player_list[number_player_turn].Index, main);
+                    }
+
+                       
                     if(main.Player_list[number_player_turn].Balance < 0)                               // As we explain we don't put hypotheque function so here we eliminate player with negative balance
                     {
                         main.Player_list.Remove(main.Player_list[number_player_turn]);
@@ -211,6 +219,47 @@ namespace Monopoly_game
             }        
         }
 
+        static void Preview_board(int index, Game main)
+        {
 
+            //nous allons recuperer les index avant et apres
+            //nous choisissons d'afficher 5 cases avant et 5 cases apres
+            int first_case = (index - 5) % 40;
+            int last_case = (index + 5) % 40;
+            Console.WriteLine("number | name | owner | house(s)?");
+            Console.WriteLine(main.Board.Count);
+            for (int i = 0; i < 39; i++)
+            {        
+                foreach(Player p in main.Player_list )
+                {
+                    if(p.Index == i)
+                    {
+                        Console.Write("Joueur "+p.Pseudo+" "+ i + " | ");
+                    }
+                    else
+                    {
+                        Console.Write(i + " | ");
+                    }
+                }
+                if (main.Board[i] is Property)
+                {
+                    Property proper = (Property)main.Board[i];
+                    Console.ForegroundColor = proper.Color;
+                }
+                Console.Write(main.Board[i].Name + " | ");
+                Console.ResetColor();
+                if (main.Board[i] is Property)
+                {
+                    Property proper2 = (Property)main.Board[i];
+                    if(proper2.Owner  != null)
+                    {
+                        Console.Write(proper2.Owner.Pseudo + " | ");
+                    }
+                    
+                }
+                
+
+            }
+        }
     }
 }
